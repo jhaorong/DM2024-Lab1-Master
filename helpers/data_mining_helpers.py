@@ -14,9 +14,22 @@ def format_rows(docs):
         D.append([temp_d])
     return D
 
+def format_rows_modified(docs):
+    """ format the text field and strip special characters """
+    D = []
+    for d in docs.comment:
+        temp_d = " ".join(d.split("\n")).strip('\n\t')
+        D.append([temp_d])
+    return D
+
 def format_labels(target, docs):
     """ format the labels """
     return docs.target_names[target]
+
+def format_labels_modified(target):
+    """ format the labels """
+    mapping = {"not nostalgia": 0, "nostalgia": 1}
+    return mapping[target]
 
 def check_missing_values(row):
     """ functions that check and verifies if there are missing values in dataframe """
